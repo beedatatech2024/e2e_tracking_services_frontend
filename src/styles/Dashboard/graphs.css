@@ -1,0 +1,319 @@
+/* =========================
+   MAIN GRID
+========================= */
+
+.e2e_dashboard_grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,minmax(0,1fr));
+
+  gap:16px;
+
+  align-items:stretch;
+
+  margin-top:10px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.e2e_card{
+  height:100%;
+
+  background:rgba(255,255,255,0.4);
+
+  border:1px solid #ececec;
+
+  border-radius:18px;
+
+  padding:16px;
+
+  box-shadow:
+  0 4px 14px rgba(0,0,0,0.04);
+
+  transition:0.3s ease;
+
+  overflow:hidden;
+}
+
+.e2e_card:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.e2e_card_title{
+  font-size:16px;
+  font-weight:700;
+
+  color:#1f2940;
+
+  margin-bottom:14px;
+}
+
+/* =========================
+   CHART LAYOUT
+========================= */
+
+.e2e_chart_layout{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:16px;
+}
+
+/* =========================
+   CHART
+========================= */
+
+.e2e_chart_wrapper{
+  width:160px;
+  height:160px;
+
+  position:relative;
+
+  flex-shrink:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* CENTER VALUES */
+
+.e2e_chart_center{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+}
+
+.e2e_chart_center h2{
+  font-size:24px;
+  font-weight:800;
+
+  color:#1f2940;
+
+  line-height:1;
+}
+
+.e2e_chart_center p{
+  margin-top:4px;
+
+  font-size:12px;
+
+  color:#777;
+}
+
+/* =========================
+   LEGEND
+========================= */
+
+.e2e_chart_legend{
+  flex:1;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:12px;
+}
+
+.e2e_legend_item{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:10px;
+}
+
+.e2e_legend_left{
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+.e2e_dot{
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+}
+
+.e2e_legend_left p{
+  font-size:13px;
+  font-weight:500;
+
+  color:#444;
+}
+
+.e2e_legend_item span{
+  font-size:12px;
+  font-weight:600;
+
+  color:#666;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.e2e_skills_list{
+  margin-top:10px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:18px;
+}
+
+.e2e_skill_item{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+}
+
+.e2e_skill_left{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  width:130px;
+}
+
+.e2e_skill_icon{
+  width:32px;
+  height:32px;
+
+  border-radius:10px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:14px;
+}
+
+.e2e_skill_left p{
+  font-size:13px;
+  font-weight:600;
+
+  color:#333;
+}
+
+.e2e_skill_bar_wrapper{
+  flex:1;
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+}
+
+.e2e_skill_bar_bg{
+  flex:1;
+
+  height:7px;
+
+  background:#ececec;
+
+  border-radius:20px;
+
+  overflow:hidden;
+}
+
+.e2e_skill_bar_fill{
+  height:100%;
+
+  border-radius:20px;
+}
+
+.e2e_skill_bar_wrapper span{
+  font-size:12px;
+  font-weight:600;
+
+  color:#555;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.e2e_view_btn,
+.e2e_view_all{
+  border:none;
+
+  background:#f5f3ff;
+
+  color:#7c4dff;
+
+  padding:7px 12px;
+
+  border-radius:8px;
+
+  font-size:11px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.e2e_view_btn:hover,
+.e2e_view_all:hover{
+  transform:translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media screen and (max-width:1100px){
+
+  .e2e_dashboard_grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media screen and (max-width:768px){
+
+  .e2e_dashboard_grid{
+    grid-template-columns:1fr;
+  }
+
+  .e2e_chart_layout{
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+
+  .e2e_chart_wrapper{
+    margin:auto;
+  }
+}

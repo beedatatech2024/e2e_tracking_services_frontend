@@ -1,0 +1,19 @@
+.e2e_table_container{
+  background:white;
+  margin-top:20px;
+  border-radius:20px;
+  padding:20px;
+  overflow:auto;
+}
+
+.e2e_dashboard_table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.e2e_dashboard_table th,
+.e2e_dashboard_table td{
+  padding:15px;
+  text-align:left;
+  border-bottom:1px solid #eee;
+}

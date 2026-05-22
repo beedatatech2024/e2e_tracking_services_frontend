@@ -1,0 +1,396 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* MAIN PAGE */
+
+.homePage {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 30px;
+
+  background: url("../../public/123.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+
+/* OVERLAY */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+/* LEFT SECTION */
+
+.leftSection {
+  width: 58%;
+  height: 100%;
+
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* RIGHT SECTION */
+
+.rightSection {
+  width: 40%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* TOP LOGO */
+
+.topLogoSection {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  animation: fadeDown 1s ease;
+}
+
+.topLogo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.logoContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoTitle {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logoSubTitle {
+  color: white;
+  letter-spacing: 4px;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+/* MAIN CONTENT */
+
+.headingSection {
+  margin-top: 10px;
+}
+
+.mainHeading {
+  color: white;
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 800;
+
+  animation: slideLeft 1s ease;
+}
+
+.mainHeading span {
+  display: block;
+
+  background: linear-gradient(
+    to right,
+    #ff9800,
+    #ff5e62,
+    #c135ff
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headingLine {
+  width: 90px;
+  height: 4px;
+  border-radius: 20px;
+
+  margin-top: 10px;
+
+  background: linear-gradient(
+    to right,
+    #7c4dff,
+    #8e68ff
+  );
+}
+
+.descriptionText {
+  color: white;
+  width: 90%;
+  font-size: 17px;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+/* SERVICE BOX */
+
+.serviceBox {
+  margin-top: 15px;
+
+  width: 90%;
+  padding: 18px 22px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(2, 36, 145, 0.22),
+    rgba(22, 14, 80, 0.32),
+    rgba(10, 10, 45, 0.38)
+  );
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(120, 140, 255, 0.39);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+  animation: fadeUp 1s ease;
+}
+
+.serviceHeading {
+  color: #6674ff;
+  font-size: 18px;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 20px;
+}
+
+.serviceItem {
+  color: white;
+  font-size: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  transition: 0.3s;
+}
+
+.serviceItem:hover {
+  transform: translateX(6px);
+}
+
+/* ICON */
+
+.serviceIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    to bottom,
+    #7b5cff,
+    #6b3fff
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 15px;
+  color: white;
+
+  flex-shrink: 0;
+
+  box-shadow: 0 8px 20px rgba(90, 60, 255, 0.35);
+}
+
+/* DIFFERENT COLORS FOR ICONS */
+
+.serviceItem:nth-child(1) .serviceIcon {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+}
+
+.serviceItem:nth-child(2) .serviceIcon {
+  background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+}
+
+.serviceItem:nth-child(3) .serviceIcon {
+  background: linear-gradient(135deg, #00c853, #009624);
+}
+
+.serviceItem:nth-child(4) .serviceIcon {
+  background: linear-gradient(135deg, #5c6bc0, #283593);
+}
+
+.serviceItem:nth-child(5) .serviceIcon {
+  background: linear-gradient(135deg, #ff1744, #ff9100);
+}
+
+.serviceItem:nth-child(6) .serviceIcon {
+  background: linear-gradient(135deg, #00bfa5, #00695c);
+}
+
+.serviceItem:nth-child(7) .serviceIcon {
+  background: linear-gradient(135deg, #ffca28, #ff8f00);
+}
+
+.serviceItem:nth-child(8) .serviceIcon {
+  background: linear-gradient(135deg, #ff4081, #c2185b);
+}
+
+.serviceItem:nth-child(9) .serviceIcon {
+  background: linear-gradient(135deg, #ffd54f, #f57f17);
+}
+
+.serviceItem:nth-child(10) .serviceIcon {
+  background: linear-gradient(135deg, #26c6da, #00838f);
+}
+
+.serviceItem:nth-child(11) .serviceIcon {
+  background: linear-gradient(135deg, #3f51b5, #1a237e);
+}
+
+/* BOTTOM CARDS */
+
+.bottomCards {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+/* ANIMATIONS */
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLET VIEW */
+
+@media screen and (max-width: 1024px) {
+  .homePage {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+
+    flex-direction: column;
+    padding: 25px 20px;
+  }
+
+  .leftSection,
+  .rightSection {
+    width: 100%;
+    height: auto;
+  }
+
+  .rightSection {
+    margin-top: 30px;
+  }
+
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottomCards {
+    justify-content: center;
+  }
+}
+
+/* MOBILE VIEW */
+
+@media screen and (max-width: 600px) {
+  .mainHeading {
+    font-size: 32px;
+  }
+
+  .descriptionText {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .serviceBox {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .serviceHeading {
+    font-size: 17px;
+  }
+
+  .serviceItem {
+    font-size: 14px;
+  }
+
+  .serviceIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .topLogo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logoTitle {
+    font-size: 18px;
+  }
+
+  .logoSubTitle {
+    font-size: 9px;
+  }
+}

@@ -1,0 +1,89 @@
+body{
+  margin:0;
+  padding:0;
+
+  background:#f5f7fb;
+
+  font-family:
+  'Inter',
+  'Poppins',
+  sans-serif;
+}
+
+/* MAIN LAYOUT */
+
+.e2e_dashboard_main_layout{
+  display:flex;
+
+  width:100%;
+
+  min-height:100vh;
+}
+
+/* RIGHT SECTION */
+
+.e2e_dashboard_right_section{
+
+  margin-left:260px;
+
+  width:calc(100% - 260px);
+
+  min-height:100vh;
+}
+
+/* CONTENT AREA */
+
+.e2e_dashboard_scroll_content{
+
+  /* margin-top:70px; */
+
+  padding:20px;
+
+  width:100%;
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+  .e2e_cards_grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .e2e_dashboard_grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:768px){
+
+  .e2e_sidebar_container{
+    width:80px;
+  }
+
+  .e2e_sidebar_menu_item span,
+  .e2e_sidebar_logout span{
+    display:none;
+  }
+
+  .e2e_dashboard_right_section{
+
+    margin-left:80px;
+
+    width:calc(100% - 80px);
+  }
+
+  .e2e_navbar_container{
+
+    width:calc(100% - 80px);
+  }
+
+  .e2e_cards_grid{
+    grid-template-columns:1fr;
+  }
+
+  .e2e_dashboard_scroll_content{
+    margin-top:70px;
+    padding:14px;
+  }
+}
