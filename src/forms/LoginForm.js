@@ -3,6 +3,7 @@ import { useState } from "react";
 import "../styles/LoginForm.css";
 
 import { loginUser } from "../api/authApi";
+import { useNavigate } from "react-router-dom";
 
 import {
   FaGoogle,
@@ -21,7 +22,7 @@ function LoginForm() {
     username: "",
     password: "",
   });
-
+const navigate = useNavigate();
   const handleChange = (e) => {
 
     setFormData({
@@ -183,6 +184,21 @@ function LoginForm() {
             <FaArrowRight className="buttonArrow" />
 
           </button>
+          <div className="newRegisterSection">
+
+  <span>
+    Don't have an account?
+  </span>
+
+  <button
+    type="button"
+    className="newRegisterBtn"
+    onClick={() => navigate("/register")}
+  >
+    New Register
+  </button>
+
+</div>
 
         </form>
 

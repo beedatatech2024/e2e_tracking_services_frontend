@@ -1,0 +1,31 @@
+.e2e_loader_wrapper{
+
+  height:70vh;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.e2e_loader{
+
+  width:60px;
+  height:60px;
+
+  border:6px solid #e5e7eb;
+
+  border-top:6px solid #2563eb;
+
+  border-radius:50%;
+
+  animation:e2eSpin 1s linear infinite;
+}
+
+@keyframes e2eSpin{
+
+  100%{
+    transform:rotate(360deg);
+  }
+}

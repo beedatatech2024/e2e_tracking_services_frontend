@@ -1,0 +1,568 @@
+/* =================================
+   PAGE
+================================= */
+
+.e2e_benchsales_page{
+
+  background:#ffffff;
+
+  padding:22px;
+
+  border-radius:20px;
+
+  border:1px solid #edf2f7;
+
+  box-shadow:
+    0 6px 20px rgba(15,23,42,0.05);
+}
+
+/* =================================
+   TOP SECTION
+================================= */
+
+.e2e_benchsales_top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:24px;
+
+  gap:16px;
+
+  flex-wrap:wrap;
+}
+
+.e2e_benchsales_top h2{
+
+  margin:0;
+
+  font-size:24px;
+
+  font-weight:800;
+
+  color:#0f172a;
+}
+
+.e2e_benchsales_heading_line{
+
+  width:90px;
+
+  height:4px;
+
+  margin-top:10px;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #7c3aed
+    );
+}
+
+/* =================================
+   ADD BUTTON
+================================= */
+
+.e2e_benchsales_add_btn{
+
+  border:none;
+
+  height:42px;
+
+  padding:0 22px;
+
+  border-radius:12px;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  color:white;
+
+  cursor:pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1677ff,
+      #2563eb
+    );
+
+  transition:0.3s ease;
+}
+
+.e2e_benchsales_add_btn:hover{
+
+  transform:translateY(-2px);
+}
+
+/* =================================
+   FILTER SECTION
+================================= */
+
+.e2e_benchsales_filters{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:20px;
+
+  padding:18px;
+
+  border-radius:16px;
+
+  background:#f8fafc;
+
+  border:1px solid #edf2f7;
+
+  margin-bottom:20px;
+}
+
+.e2e_benchsales_filter_left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  flex-wrap:wrap;
+}
+
+.e2e_benchsales_filter_left label{
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:#334155;
+}
+
+.e2e_benchsales_select{
+
+  height:40px;
+
+  min-width:200px;
+
+  padding:0 14px;
+
+  border:1px solid #dbe2ea;
+
+  border-radius:12px;
+
+  font-size:13px;
+
+  outline:none;
+}
+
+.e2e_benchsales_report_btn{
+
+  border:none;
+
+  height:40px;
+
+  padding:0 18px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #06b6d4,
+      #0891b2
+    );
+
+  color:white;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+.e2e_benchsales_filter_right{
+
+  display:flex;
+
+  align-items:center;
+}
+
+.e2e_benchsales_search{
+
+  width:260px;
+
+  height:40px;
+
+  padding:0 14px;
+
+  border:1px solid #dbe2ea;
+
+  border-radius:12px;
+
+  outline:none;
+}
+
+/* =================================
+   SHOW ENTRIES
+================================= */
+
+.e2e_benchsales_show_row{
+
+  margin-bottom:14px;
+
+  font-size:14px;
+
+  color:#475569;
+}
+
+.e2e_benchsales_entries{
+
+  height:36px;
+
+  margin:0 8px;
+
+  padding:0 10px;
+
+  border:1px solid #dbe2ea;
+
+  border-radius:8px;
+}
+
+/* =================================
+   TABLE WRAPPER
+================================= */
+
+.e2e_benchsales_table_wrapper{
+
+  overflow-x:auto;
+}
+
+/* =================================
+   TABLE
+================================= */
+
+.e2e_benchsales_table{
+
+  width:100%;
+
+  border-collapse:separate;
+
+  border-spacing:0 10px;
+
+  table-layout:fixed;
+}
+
+/* =================================
+   HEADERS
+================================= */
+
+.e2e_benchsales_head_row{
+
+  background:#f8fafc;
+}
+
+.e2e_benchsales_head_row th{
+
+  padding:15px;
+
+  font-size:12px;
+
+  font-weight:800;
+
+  text-transform:uppercase;
+
+  color:#475569;
+
+  border-top:1px solid #e2e8f0;
+
+  border-bottom:1px solid #e2e8f0;
+
+  text-align:center;
+}
+
+/* =================================
+   BODY ROWS
+================================= */
+
+.e2e_benchsales_row{
+
+  background:white;
+
+  transition:0.3s ease;
+
+  box-shadow:
+    0 3px 12px rgba(15,23,42,0.04);
+}
+
+.e2e_benchsales_row:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 10px 24px rgba(15,23,42,0.08);
+}
+
+/* =================================
+   TABLE DATA
+================================= */
+
+.e2e_benchsales_row td{
+
+  padding:18px 16px;
+
+  border-top:1px solid #f1f5f9;
+
+  border-bottom:1px solid #f1f5f9;
+
+  font-size:13px;
+
+  font-weight:600;
+
+  color:#0f172a;
+
+  text-align:center;
+
+  vertical-align:middle;
+}
+
+/* =================================
+   COLUMN WIDTHS
+================================= */
+
+.e2e_benchsales_th_id,
+.e2e_benchsales_td_id{
+
+  width:50px;
+}
+
+.e2e_benchsales_th_consultant,
+.e2e_benchsales_td_consultant{
+
+  width:30%;
+
+  text-align:left;
+}
+
+.e2e_benchsales_th_technology,
+.e2e_benchsales_td_technology{
+
+  width:20%;
+}
+
+.e2e_benchsales_th_recruiter,
+.e2e_benchsales_td_recruiter{
+
+  width:15%;
+}
+
+.e2e_benchsales_th_location,
+.e2e_benchsales_td_location{
+
+  width:20%;
+}
+
+.e2e_benchsales_th_action,
+.e2e_benchsales_td_action{
+
+  width:220px;
+}
+
+/* =================================
+   RADIUS
+================================= */
+
+.e2e_benchsales_row td:first-child{
+
+  border-left:1px solid #f1f5f9;
+
+  border-top-left-radius:14px;
+
+  border-bottom-left-radius:14px;
+
+  color:#2563eb;
+
+  font-weight:800;
+}
+
+.e2e_benchsales_row td:last-child{
+
+  border-right:1px solid #f1f5f9;
+
+  border-top-right-radius:14px;
+
+  border-bottom-right-radius:14px;
+}
+
+/* =================================
+   DETAILS
+================================= */
+
+.e2e_benchsales_details{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+}
+
+.e2e_benchsales_details p{
+
+  margin:0;
+
+  font-size:13px;
+
+  line-height:1.5;
+
+  color:#475569;
+}
+
+.e2e_benchsales_details strong{
+
+  color:#0f172a;
+
+  margin-left:5px;
+}
+
+/* =================================
+   ACTIONS
+================================= */
+
+.e2e_benchsales_actions{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+
+  flex-wrap:nowrap;
+}
+
+/* =================================
+   BUTTONS
+================================= */
+
+.e2e_benchsales_view_btn,
+.e2e_benchsales_edit_btn,
+.e2e_benchsales_delete_btn{
+
+  border:none;
+
+  min-width:64px;
+
+  height:32px;
+
+  border-radius:10px;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+}
+
+.e2e_benchsales_view_btn{
+
+  background:#dbeafe;
+
+  color:#2563eb;
+}
+
+.e2e_benchsales_view_btn:hover{
+
+  background:#2563eb;
+
+  color:white;
+}
+
+.e2e_benchsales_edit_btn{
+
+  background:#fef3c7;
+
+  color:#d97706;
+}
+
+.e2e_benchsales_edit_btn:hover{
+
+  background:#f59e0b;
+
+  color:white;
+}
+
+.e2e_benchsales_delete_btn{
+
+  background:#fee2e2;
+
+  color:#dc2626;
+}
+
+.e2e_benchsales_delete_btn:hover{
+
+  background:#dc2626;
+
+  color:white;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media(max-width:992px){
+
+  .e2e_benchsales_filters{
+
+    flex-direction:column;
+
+    align-items:stretch;
+  }
+
+  .e2e_benchsales_search{
+
+    width:100%;
+  }
+
+  .e2e_benchsales_table{
+
+    min-width:1100px;
+  }
+
+}
+.e2e_benchsales_th_submission,
+.e2e_benchsales_td_submission{
+  width:16%;
+}
+
+.e2e_benchsales_th_candidate,
+.e2e_benchsales_td_candidate{
+  width:34%;
+  text-align:left;
+}
+
+.e2e_benchsales_th_poc,
+.e2e_benchsales_td_poc{
+  width:14%;
+}
+
+.e2e_benchsales_th_client,
+.e2e_benchsales_td_client{
+  width:18%;
+}
+
+.e2e_benchsales_th_action,
+.e2e_benchsales_td_action{
+  width:220px;
+}

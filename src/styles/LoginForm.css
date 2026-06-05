@@ -318,3 +318,97 @@
   font-size:11px;
   line-height:1.4;
 }
+/* LANGUAGE SECTION */
+
+.languageWrapper{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:10px;
+}
+
+.languageButton{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  height:38px;
+  padding:0 16px;
+
+  border:none;
+  border-radius:12px;
+
+  background:#f4f6ff;
+
+  color:#3c4a67;
+
+  font-size:13px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:all 0.3s ease;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.05);
+}
+
+.languageButton:hover{
+  background:#eef2ff;
+  transform:translateY(-2px);
+}
+
+.languageIcon{
+  font-size:14px;
+  color:#6c4cff;
+}
+
+
+/* NEW REGISTER SECTION */
+
+.newRegisterSection{
+  margin-top:16px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+
+  font-size:13px;
+  color:#777;
+}
+
+.newRegisterBtn{
+  border:none;
+
+  padding:8px 16px;
+
+  border-radius:30px;
+
+  background:linear-gradient(
+    135deg,
+    #8b2cff,
+    #2f6bff
+  );
+
+  color:#fff;
+
+  font-size:12px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.newRegisterBtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(108,76,255,0.35);
+}
+
+.newRegisterBtn:hover{
+  color:#ffffff;
+}
+
+.newRegisterBtn:hover::after{
+  width:100%;
+}

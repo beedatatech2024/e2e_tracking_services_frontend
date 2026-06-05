@@ -48,10 +48,10 @@ function Homepage() {
 
           <div className="headingLine"></div>
 
-          <p className="descriptionText">
+          {/* <p className="descriptionText">
             A complete solution to manage your workforce,
             recruitment and business operations efficiently.
-          </p>
+          </p> */}
         </div>
 
         {/* SERVICE BOX */}

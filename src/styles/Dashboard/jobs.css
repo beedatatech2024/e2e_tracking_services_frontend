@@ -1,0 +1,393 @@
+@import "./hotlist.css";
+
+/* PAGE */
+
+.e2e_jobs_page{
+
+  background:#ffffff;
+
+  padding:26px;
+
+  border-radius:24px;
+
+  border:1px solid #edf2f7;
+
+  box-shadow:
+    0 10px 35px rgba(15,23,42,0.06);
+}
+
+/* TOP */
+
+.e2e_jobs_top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:28px;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+}
+
+/* TITLE */
+
+.e2e_jobs_left h2{
+
+  font-size:28px;
+
+  font-weight:800;
+
+  color:#0f172a;
+
+  margin:0;
+}
+
+/* UNDERLINE */
+
+.e2e_jobs_heading_line{
+
+  width:95px;
+
+  height:5px;
+
+  margin-top:12px;
+
+  border-radius:30px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #7c3aed
+    );
+}
+
+/* BUTTON */
+
+.e2e_jobs_right button{
+
+  border:none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1677ff,
+      #2563eb
+    );
+
+  color:white;
+
+  height:46px;
+
+  padding:0 24px;
+
+  border-radius:14px;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+}
+
+/* FILTERS */
+
+.e2e_jobs_filters{
+
+  background:#f8fafc;
+
+  border:1px solid #edf2f7;
+
+  border-radius:20px;
+
+  padding:20px 22px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:24px;
+
+  margin-bottom:28px;
+}
+
+/* LEFT */
+
+.e2e_jobs_filter_left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+
+  flex-wrap:wrap;
+}
+
+/* GROUP */
+
+.e2e_jobs_filter_group{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+.e2e_jobs_filter_group label{
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:#334155;
+}
+
+.e2e_jobs_filter_group span{
+
+  font-size:14px;
+
+  font-weight:600;
+
+  color:#64748b;
+}
+
+/* SELECT */
+
+.e2e_jobs_filter_group select{
+
+  height:46px;
+
+  min-width:200px;
+
+  padding:0 16px;
+
+  border:1px solid #dbe2ea;
+
+  border-radius:14px;
+
+  background:white;
+
+  font-size:14px;
+
+  font-weight:600;
+}
+
+/* SMALL */
+
+.smallSelect{
+
+  min-width:90px !important;
+}
+
+/* REPORT */
+
+.e2e_jobs_report_btn{
+
+  height:46px;
+
+  border:none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #06b6d4,
+      #0891b2
+    );
+
+  color:white;
+
+  padding:0 22px;
+
+  border-radius:14px;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+/* SEARCH */
+
+.e2e_jobs_filter_right input{
+
+  width:320px;
+
+  height:46px;
+
+  padding:0 18px;
+
+  border:1px solid #dbe2ea;
+
+  border-radius:14px;
+
+  background:white;
+}
+
+/* TABLE */
+
+.e2e_jobs_table_wrapper{
+
+  overflow-x:auto;
+}
+
+.e2e_jobs_table_wrapper table{
+
+  width:100%;
+
+  border-collapse:separate;
+
+  border-spacing:0 14px;
+}
+
+/* HEAD */
+
+.e2e_jobs_table_wrapper thead th{
+
+  background:#f8fafc;
+
+  padding:18px;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  text-transform:uppercase;
+
+  color:#475569;
+}
+
+/* ROW */
+
+.e2e_jobs_table_wrapper tbody tr{
+
+  background:white;
+
+  box-shadow:
+    0 4px 15px rgba(15,23,42,0.04);
+}
+
+/* CELLS */
+
+.e2e_jobs_table_wrapper td{
+
+  padding:20px 18px;
+
+  vertical-align:middle;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  border-top:1px solid #f1f5f9;
+
+  border-bottom:1px solid #f1f5f9;
+}
+
+/* WIDTHS */
+
+.e2e_jobs_table_wrapper td:nth-child(1){
+
+  width:60px;
+
+  text-align:center;
+
+  color:#2563eb;
+
+  font-weight:800;
+}
+
+.e2e_jobs_table_wrapper td:nth-child(2){
+
+  width:32%;
+}
+
+.e2e_jobs_table_wrapper td:nth-child(3){
+
+  width:25%;
+}
+
+.e2e_jobs_table_wrapper td:nth-child(4){
+
+  width:28%;
+}
+
+.e2e_jobs_table_wrapper td:nth-child(5){
+
+  width:150px;
+}
+
+/* DETAILS */
+
+.e2e_jobs_details{
+
+  line-height:1.7;
+}
+
+.e2e_jobs_details strong{
+
+  margin-left:6px;
+}
+
+/* ACTIONS */
+
+.e2e_jobs_actions{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+/* BUTTONS */
+
+.viewBtn,
+.editBtn,
+.deleteBtn{
+
+  border:none;
+
+  width:80px;
+
+  height:38px;
+
+  border-radius:10px;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+.viewBtn{
+
+  background:#dbeafe;
+
+  color:#2563eb;
+}
+
+.editBtn{
+
+  background:#fef3c7;
+
+  color:#d97706;
+}
+
+.deleteBtn{
+
+  background:#fee2e2;
+
+  color:#dc2626;
+}

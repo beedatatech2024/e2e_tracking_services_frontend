@@ -1,53 +1,98 @@
 import "../../styles/Dashboard/table.css";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+function DashboardTable({ tableData }) {
 
-function DashboardTable() {
+  /* ACTION FUNCTIONS */
 
-  const [tableData, setTableData] = useState([]);
+  const handleView = (item) => {
 
-  useEffect(() => {
+    alert(`Viewing ${item.candidateName}`);
 
-    axios
-      .get("http://localhost:5000/dashboard-table")
-      .then((res) => {
-        setTableData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  };
 
-  }, []);
+  const handleEdit = (item) => {
+
+    alert(`Editing ${item.candidateName}`);
+
+  };
+
+  const handleDelete = (id) => {
+
+    alert(`Deleting Row ID: ${id}`);
+
+  };
 
   return (
 
     <div className="e2e_table_container">
 
       <div className="e2e_table_header">
-        <h3>Recent Activities</h3>
+
+        <h3>Recent Submissions</h3>
+
       </div>
 
       <table className="e2e_dashboard_table">
 
         <thead>
+
           <tr>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Date</th>
+
+            <th>Sno</th>
+
+            <th>Submission Date</th>
+
+            <th>Recruiter Name</th>
+
+            <th>Candidate Name</th>
+
+            <th>Action</th>
+
           </tr>
+
         </thead>
 
         <tbody>
 
           {tableData.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.role}</td>
-              <td>{item.status}</td>
-              <td>{item.date}</td>
+
+            <tr key={item.id}>
+
+              <td>{index + 1}</td>
+
+              <td>{item.submissionDate}</td>
+
+              <td>{item.recruiterName}</td>
+
+              <td>{item.candidateName}</td>
+
+              <td className="e2e_action_buttons">
+
+                <button
+                  className="e2e_view_btn"
+                  onClick={() => handleView(item)}
+                >
+                  View
+                </button>
+
+                <button
+                  className="e2e_edit_btn"
+                  onClick={() => handleEdit(item)}
+                >
+                  Edit
+                </button>
+
+                <button
+                  className="e2e_delete_btn"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  Delete
+                </button>
+
+              </td>
+
             </tr>
+
           ))}
 
         </tbody>

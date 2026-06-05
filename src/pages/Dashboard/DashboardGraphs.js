@@ -21,11 +21,11 @@ import {
 ========================= */
 
 const candidateData = [
-  { name: "Active", value: 4520, color: "#4285F4" },
-  { name: "Submitted", value: 3250, color: "#8E54FF" },
-  { name: "On Hold", value: 2180, color: "#F9A826" },
-  { name: "Rejected", value: 1870, color: "#FF5B6E" },
-  { name: "Placed", value: 720, color: "#52C56B" },
+  { name: "Swain", value: 4520, color: "#4285F4" },
+  { name: "Steven", value: 3250, color: "#8E54FF" },
+  { name: "Jones", value: 2180, color: "#F9A826" },
+  { name: "Jasmine", value: 720, color: "#FF5B6E" },
+  { name: "Lilly", value: 1870, color: "#52C56B" },
 ];
 
 /* =========================
@@ -34,31 +34,31 @@ const candidateData = [
 
 const skills = [
   {
-    name: "React.js",
+    name: "Swain",
     value: 85,
     color: "#4285F4",
     icon: <FaCode />,
   },
   {
-    name: "JavaScript",
+    name: "Steven",
     value: 72,
     color: "#F9A826",
     icon: <FaCode />,
   },
   {
-    name: "Node.js",
+    name: "Jones",
     value: 61,
     color: "#52C56B",
     icon: <FaDatabase />,
   },
   {
-    name: "Python",
+    name: "Jasmine",
     value: 54,
     color: "#8E54FF",
     icon: <FaPython />,
   },
   {
-    name: "AWS",
+    name: "Lilly",
     value: 43,
     color: "#FF5B6E",
     icon: <FaAws />,
@@ -78,7 +78,7 @@ function DashboardGraphs() {
       <div className="e2e_card">
 
         <h3 className="e2e_card_title">
-          Candidates Overview
+          Submissions Overview
         </h3>
 
         <div className="e2e_chart_layout">
@@ -238,95 +238,126 @@ function DashboardGraphs() {
       {/* =========================
           SOURCE PERFORMANCE
       ========================= */}
+{/* =========================
+    FILTER PERFORMANCE
+========================= */}
 
-      <div className="e2e_card">
+<div className="e2e_card">
 
-        <h3 className="e2e_card_title">
-          Source Performance
-        </h3>
+  <div className="e2e_graph_filter_header">
 
-        <div className="e2e_chart_layout">
+    <h3 className="e2e_card_title">
 
-          <div className="e2e_chart_wrapper">
+      Submission Analytics
 
-            <ResponsiveContainer width="100%" height={180}>
+    </h3>
 
-              <PieChart>
+  </div>
 
-                <Pie
-                  data={candidateData}
-                  dataKey="value"
-                  innerRadius={50}
-                  outerRadius={70}
-                  paddingAngle={2}
-                >
+  <div className="e2e_graph_filters">
 
-                  {candidateData.map((item, index) => (
+    <div className="e2e_graph_filter_item">
 
-                    <Cell
-                      key={index}
-                      fill={item.color}
-                    />
+      <label>
+        Start Date
+      </label>
 
-                  ))}
+      <input
+        type="date"
+        className="e2e_graph_input"
+      />
 
-                </Pie>
+    </div>
 
-                <Tooltip />
+    <div className="e2e_graph_filter_item">
 
-              </PieChart>
+      <label>
+        End Date
+      </label>
 
-            </ResponsiveContainer>
+      <input
+        type="date"
+        className="e2e_graph_input"
+      />
 
-            <div className="e2e_chart_center">
+    </div>
 
-              <h2>12,540</h2>
+    <div className="e2e_graph_filter_item">
 
-              <p>Total</p>
+      <label>
+        Category
+      </label>
 
-            </div>
+      <select className="e2e_graph_select">
 
-          </div>
+        <option>
+          All Categories
+        </option>
 
-          <div className="e2e_chart_legend">
+        <option>
+          Recruiting
+        </option>
 
-            {candidateData.map((item, index) => (
+        <option>
+          Bench Sales
+        </option>
 
-              <div
-                className="e2e_legend_item"
-                key={index}
-              >
+        <option>
+          Hot List
+        </option>
 
-                <div className="e2e_legend_left">
+        <option>
+          Jobs
+        </option>
 
-                  <span
-                    className="e2e_dot"
-                    style={{ background: item.color }}
-                  ></span>
+        <option>
+          Prime Vendors
+        </option>
 
-                  <p>{item.name}</p>
+        <option>
+          Clients
+        </option>
 
-                </div>
+        <option>
+          Candidates
+        </option>
 
-                <span>{item.value}</span>
+      </select>
 
-              </div>
+    </div>
 
-            ))}
+    <button className="e2e_graph_apply_btn">
 
-          </div>
+      Apply Filter
 
-        </div>
+    </button>
 
-        <button className="e2e_view_btn">
+  </div>
 
-          View Details
+  {/* <div className="e2e_graph_placeholder">
 
-          <FaArrowRight />
+    <div className="e2e_graph_placeholder_icon">
 
-        </button>
+      📊
 
-      </div>
+    </div>
+
+    <h4>
+
+      Submission Performance Graph
+
+    </h4>
+
+    <p>
+
+      Select date range and category
+      to generate performance analytics.
+
+    </p>
+
+  </div> */}
+
+</div>
 
     </div>
 

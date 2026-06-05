@@ -1,0 +1,395 @@
+.e2e_benchsales_form_overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  background:
+  rgba(0,0,0,.55);
+
+  backdrop-filter:blur(5px);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  z-index:9999;
+}
+
+.e2e_benchsales_form_modal{
+
+  width:90%;
+
+  max-width:1150px;
+
+  max-height:90vh;
+
+  overflow-y:auto;
+
+  background:white;
+
+  border-radius:18px;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.15);
+}
+
+.e2e_benchsales_form_header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:22px 30px;
+
+  border-bottom:1px solid #e5e7eb;
+}
+
+.e2e_benchsales_form_header h2{
+
+  font-size:28px;
+
+  color:#111827;
+}
+
+.e2e_benchsales_form_header p{
+
+  color:#6b7280;
+
+  margin-top:4px;
+}
+
+.e2e_benchsales_form_close{
+
+  width:42px;
+
+  height:42px;
+
+  border:none;
+
+  border-radius:50%;
+
+  cursor:pointer;
+
+  background:#f3f4f6;
+
+  font-size:18px;
+}
+
+.e2e_benchsales_form_grid{
+
+  padding:30px;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,1fr);
+
+  gap:22px;
+}
+
+.e2e_benchsales_form_field{
+
+  display:flex;
+
+  flex-direction:column;
+}
+
+.e2e_benchsales_form_field label{
+
+  margin-bottom:8px;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  color:#374151;
+}
+
+.e2e_benchsales_form_field input,
+.e2e_benchsales_form_field select{
+
+  height:46px;
+
+  border:1px solid #d1d5db;
+
+  border-radius:10px;
+
+  padding:0 14px;
+
+  background:#fff;
+}
+
+.e2e_benchsales_form_remarks{
+
+  padding:0 30px 25px;
+}
+
+.e2e_benchsales_form_remarks label{
+
+  display:block;
+
+  margin-bottom:10px;
+
+  font-weight:600;
+}
+
+.e2e_benchsales_form_remarks textarea{
+
+  width:100%;
+
+  height:120px;
+
+  border:1px solid #d1d5db;
+
+  border-radius:10px;
+
+  padding:15px;
+
+  resize:none;
+}
+
+.e2e_benchsales_upload_section{
+
+  padding:0 30px 25px;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:18px;
+}
+
+.e2e_benchsales_upload_card{
+
+  border:2px dashed #cbd5e1;
+
+  border-radius:14px;
+
+  padding:20px;
+
+  text-align:center;
+
+  background:#f8fafc;
+}
+
+.e2e_benchsales_upload_card h4{
+
+  margin-bottom:15px;
+
+  color:#1e293b;
+}
+
+.e2e_benchsales_upload_card button{
+
+  border:none;
+
+  background:#2563eb;
+
+  color:white;
+
+  padding:10px 20px;
+
+  border-radius:10px;
+
+  cursor:pointer;
+}
+
+.e2e_benchsales_form_buttons{
+
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:15px;
+
+  padding:20px 30px;
+
+  border-top:1px solid #e5e7eb;
+}
+
+.e2e_benchsales_save_btn{
+
+  border:none;
+
+  background:#2563eb;
+
+  color:white;
+
+  padding:12px 28px;
+
+  border-radius:10px;
+
+  cursor:pointer;
+}
+
+.e2e_benchsales_cancel_btn{
+
+  border:none;
+
+  background:#e5e7eb;
+
+  color:#111827;
+
+  padding:12px 28px;
+
+  border-radius:10px;
+
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+
+  .e2e_benchsales_form_grid{
+
+    grid-template-columns:1fr;
+  }
+
+  .e2e_benchsales_upload_section{
+
+    grid-template-columns:1fr;
+  }
+}
+.e2e_hidden_file{
+
+  display:none;
+}
+
+.e2e_upload_label{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  width:100%;
+
+  height:60px;
+
+  cursor:pointer;
+
+  font-size:15px;
+
+  font-weight:600;
+
+  color:#2563eb;
+
+  transition:.3s;
+}
+
+.e2e_upload_label:hover{
+
+  color:#1d4ed8;
+}
+
+.e2e_benchsales_upload_card{
+
+  border:2px dashed #dbe2ea;
+
+  border-radius:14px;
+
+  background:#fafafa;
+
+  transition:.3s;
+
+  min-height:80px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+.e2e_benchsales_upload_card:hover{
+
+  border-color:#2563eb;
+
+  background:#f8fbff;
+}
+/* ==========================
+   UPLOAD SECTION
+========================== */
+
+.joblist_form_upload_section{
+  padding:0 25px 25px;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:18px;
+}
+
+.joblist_form_upload_card{
+  border:2px dashed #dbe2ea;
+
+  border-radius:14px;
+
+  background:#fafafa;
+
+  min-height:90px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  transition:.3s;
+}
+
+.joblist_form_upload_card:hover{
+  border-color:#2563eb;
+
+  background:#f8fbff;
+
+  transform:translateY(-2px);
+}
+
+.joblist_hidden_file{
+  display:none;
+}
+
+.joblist_upload_label{
+  width:100%;
+
+  height:100%;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  cursor:pointer;
+
+  font-size:15px;
+
+  font-weight:600;
+
+  color:#2563eb;
+
+  transition:.3s;
+
+  padding:20px;
+}
+
+.joblist_upload_label:hover{
+  color:#1d4ed8;
+}
+
+@media(max-width:768px){
+
+  .joblist_form_upload_section{
+    grid-template-columns:1fr;
+  }
+
+}

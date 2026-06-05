@@ -1,5 +1,7 @@
 import "../../styles/Dashboard/sidebar.css";
 
+import { NavLink } from "react-router-dom";
+
 import {
   FaHome,
   FaUsers,
@@ -14,20 +16,21 @@ import {
   FaComments,
   FaLaptopCode,
   FaIdBadge,
+  FaDatabase,
 } from "react-icons/fa";
 
 function Sidebar() {
+  const getClassName = ({ isActive }) =>
+    `e2e_sidebar_menu_item ${
+      isActive ? "e2e_sidebar_active" : ""
+    }`;
 
   return (
-
     <div className="e2e_sidebar_container">
-
-      {/* LOGO */}
-
       <div>
+        {/* LOGO */}
 
         <div className="e2e_sidebar_logo_section">
-
           <img
             src="/logo.png"
             alt="logo"
@@ -38,89 +41,127 @@ function Sidebar() {
             <h2>E2E TRACKING</h2>
             <p>SERVICES</p>
           </div>
-
         </div>
 
         {/* MENU */}
 
         <div className="e2e_sidebar_menu">
 
-          <div className="e2e_sidebar_menu_item e2e_sidebar_active">
+          <NavLink
+            to="/dashboard"
+            end
+            className={getClassName}
+          >
             <FaHome className="menuIcon" />
             <span>Dashboard</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/recruiting"
+            className={getClassName}
+          >
             <FaUsers className="menuIcon purpleIcon" />
             <span>Recruiting</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/benchsales"
+            className={getClassName}
+          >
             <FaClipboardList className="menuIcon blueIcon" />
             <span>Bench Sales</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/hotlist"
+            className={getClassName}
+          >
             <FaFire className="menuIcon redIcon" />
             <span>Hot List</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/jobs"
+            className={getClassName}
+          >
             <FaBriefcase className="menuIcon orangeIcon" />
             <span>Jobs</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/vendors"
+            className={getClassName}
+          >
             <FaHandshake className="menuIcon pinkIcon" />
             <span>Prime Vendors</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/clients"
+            className={getClassName}
+          >
             <FaBuilding className="menuIcon greenIcon" />
             <span>Clients</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          {/* <NavLink
+            to="/dashboard/resources"
+            className={getClassName}
+          >
+            <FaDatabase className="menuIcon" />
+            <span>Resources</span>
+          </NavLink> */}
+
+          <NavLink
+            to="/dashboard/candidates"
+            className={getClassName}
+          >
             <FaUserTie className="menuIcon violetIcon" />
             <span>Candidates</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/training"
+            className={getClassName}
+          >
             <FaGraduationCap className="menuIcon yellowIcon" />
             <span>Training</span>
-          </div>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/candidate-onboarding"
+            className={getClassName}
+          >
             <FaLaptopCode className="menuIcon cyanIcon" />
-            <span>Recruiters Interview</span>
-          </div>
+            <span>Candidate Onboarding</span>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/vendor-onboarding"
+            className={getClassName}
+          >
             <FaComments className="menuIcon tealIcon" />
-            <span>Benchsales Interview</span>
-          </div>
+            <span>Vendor Onboarding</span>
+          </NavLink>
 
-          <div className="e2e_sidebar_menu_item">
+          <NavLink
+            to="/dashboard/employee-status"
+            className={getClassName}
+          >
             <FaIdBadge className="menuIcon indigoIcon" />
-            <span>Employee Status Record</span>
-          </div>
+            <span>Emp Status Report</span>
+          </NavLink>
 
         </div>
-
       </div>
 
       {/* LOGOUT */}
 
       <div className="e2e_sidebar_logout">
-
         <FaSignOutAlt className="logoutIcon" />
-
         <span>Logout</span>
-
       </div>
-
     </div>
-
   );
 }
 
