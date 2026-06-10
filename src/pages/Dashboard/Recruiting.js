@@ -1,310 +1,254 @@
 import { useEffect, useState } from "react";
 
 import "../../styles/Dashboard/recruiting.css";
-import NewApplicationForm from "../../forms/NewApplicationForm";
 
+import NewApplicationForm from "../../forms/NewApplicationForm";
 import Loader from "./Loader";
+import Pagination from "./Pagination";
+
+import { getApplications } from "../../api/applicationApi";
 
 function Recruiting() {
+  const [loading, setLoading] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [entries, setEntries] = useState(5);
+  const [tableData, setTableData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [initialLoading, setInitialLoading] = useState(true);
+const [tableLoading, setTableLoading] = useState(false);
 
-  const [loading, setLoading] =
-    useState(true);
-  const [showPopup,setShowPopup] =
-useState(false); 
-  const [searchTerm, setSearchTerm] =
-    useState("");
+  const fetchCandidates = async () => {
+  try {
+    if (initialLoading) {
+      setInitialLoading(true);
+    } else {
+      setTableLoading(true);
+    }
 
-  const [entries, setEntries] =
-    useState(10);
+    const response = await getApplications(
+      currentPage,
+      entries,
+      debouncedSearch,
+      2
+    );
 
-  const [category, setCategory] =
-    useState("Recruiting");
+    setTableData(response.data || []);
 
-  const [tableData, setTableData] =
-    useState([]);
+    setTotalPages(
+      response.total_pages || 1
+    );
+  } catch (error) {
+    console.error(
+      "Error fetching candidates:",
+      error
+    );
+  } finally {
+    setInitialLoading(false);
+    setTableLoading(false);
+  }
+};
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchTerm);
+    }, 500);
 
-    setTimeout(() => {
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
-      setTableData([
+  useEffect(() => {
+  fetchCandidates();
+}, [
+  currentPage,
+  entries,
+  debouncedSearch,
+]);
 
-        {
-          id:1,
-          date:"2026-02-13",
-          recruiter:"Jones",
-          candidate:"Sowmya",
-        },
 
-        {
-          id:2,
-          date:"2025-12-23",
-          recruiter:"Mike",
-          candidate:"Jaganadham",
-        },
-
-        {
-          id:3,
-          date:"2025-05-14",
-          recruiter:"Kiran",
-          candidate:"Rahul",
-        },
-
-        {
-          id:4,
-          date:"2025-05-14",
-          recruiter:"Anjali",
-          candidate:"Mahesh",
-        },
-
-        {
-          id:5,
-          date:"2025-05-14",
-          recruiter:"Ravi",
-          candidate:"Lokesh",
-        },
-
-        {
-          id:6,
-          date:"2025-05-14",
-          recruiter:"John",
-          candidate:"Sandeep",
-        },
-
-        {
-          id:7,
-          date:"2025-05-14",
-          recruiter:"Robert",
-          candidate:"Vamsi",
-        },
-
-        {
-          id:8,
-          date:"2025-05-14",
-          recruiter:"Priya",
-          candidate:"Sai",
-        },
-
-        {
-          id:9,
-          date:"2025-05-14",
-          recruiter:"David",
-          candidate:"Naresh",
-        },
-
-        {
-          id:10,
-          date:"2025-05-14",
-          recruiter:"Kumar",
-          candidate:"Rakesh",
-        },
-
-        {
-          id:11,
-          date:"2025-05-14",
-          recruiter:"Surya",
-          candidate:"Ajay",
-        },
-
-        {
-          id:12,
-          date:"2025-05-14",
-          recruiter:"Mahesh",
-          candidate:"Tarun",
-        },
-
-      ]);
-
-      setLoading(false);
-
-    }, 1000);
-
-  }, []);
-
-  /* SEARCH FILTER */
-
-  const filteredData = tableData
-    .filter(
-
-      (item)=>
-
-        item.recruiter
-          .toLowerCase()
-          .includes(
-            searchTerm.toLowerCase()
-          )
-
-        ||
-
-        item.candidate
-          .toLowerCase()
-          .includes(
-            searchTerm.toLowerCase()
-          )
-    )
-
-    .slice(0, entries);
-
-  if(loading){
-
-    return <Loader />;
-  }
+  if (initialLoading) {
+  return <Loader />;
+}
 
   return (
-
     <div className="e2e_recruiting_page">
-
-      {/* TOP */}
-
       <div className="e2e_recruiting_top">
-
-        {/* LEFT */}
-
         <div className="e2e_recruiting_left">
-
           <h2>
             Recruiters Application List
           </h2>
 
           <div className="e2e_recruiting_heading_line"></div>
-
         </div>
-
-        {/* RIGHT */}
 
         <div className="e2e_recruiting_right">
-
           <button
-  className="e2e_recruiting_add_btn"
-  onClick={() =>
-    setShowPopup(true)
-  }
->
-  + Add New
-</button>
-
+            className="e2e_recruiting_add_btn"
+            onClick={() =>
+              setShowPopup(true)
+            }
+          >
+            + Add New
+          </button>
         </div>
-
       </div>
-
-      {/* FILTERS */}
 
       <div className="e2e_recruiting_filters">
-
-        {/* SEARCH */}
-
         <div className="e2e_recruiting_filter_right">
-
           <input
             type="text"
-            placeholder="Search recruiter or candidate..."
+            placeholder="Search..."
             value={searchTerm}
-            onChange={(e)=>
+            onChange={(e) => {
               setSearchTerm(
                 e.target.value
-              )
-            }
-          />
+              );
 
+              setCurrentPage(1);
+            }}
+          />
         </div>
 
+        <select
+          value={entries}
+          className="e2e_pagination_number"
+          onChange={(e) => {
+            setEntries(
+              Number(e.target.value)
+            );
+
+            setCurrentPage(1);
+          }}
+        >
+          <option value={5}>
+            5
+          </option>
+          <option value={10}>
+            10
+          </option>
+
+          <option value={25}>
+            25
+          </option>
+
+          <option value={50}>
+            50
+          </option>
+
+          <option value={100}>
+            100
+          </option>
+        </select>
       </div>
 
-      {/* TABLE */}
-
       <div className="e2e_recruiting_table_wrapper">
-
         <table>
-
           <thead>
-
             <tr>
-
               <th>#</th>
-
               <th>
                 Submission Date
               </th>
-
               <th>
                 Recruiter Name
               </th>
-
               <th>
                 Candidate Name
               </th>
-
-              <th>
-                Action
-              </th>
-
+              <th>Action</th>
             </tr>
-
           </thead>
 
           <tbody>
+  {tableLoading ? (
+    <tr>
+      <td
+        colSpan="5"
+        style={{
+          textAlign: "center",
+          padding: "30px",
+        }}
+      >
+        Loading...
+      </td>
+    </tr>
+  ) : tableData.length > 0 ? (
+    tableData.map((item, index) => (
+                <tr key={item.id}>
+                  <td>
+                    {(currentPage - 1) *
+                      entries +
+                      index +
+                      1}
+                  </td>
 
-            {filteredData.map(
-              (item,index)=>(
+                  <td>
+                    {item.date_created}
+                  </td>
 
-              <tr key={item.id}>
+                  <td>
+                    {item.employee_name}
+                  </td>
 
-                <td>
-                  {index+1}
-                </td>
+                  <td>
+                    {item.candidate_name}
+                  </td>
 
-                <td>
-                  {item.date}
-                </td>
+                  <td>
+                    <div className="e2e_recruiting_actions">
+                      <button className="viewBtn">
+                        View
+                      </button>
 
-                <td>
-                  {item.recruiter}
-                </td>
+                      <button className="editBtn">
+                        Edit
+                      </button>
 
-                <td>
-                  {item.candidate}
-                </td>
-
-                <td>
-
-                  <div className="e2e_recruiting_actions">
-
-                    <button className="viewBtn">
-                      View
-                    </button>
-
-                    <button className="editBtn">
-                      Edit
-                    </button>
-
-                    <button className="deleteBtn">
-                      Delete
-                    </button>
-
-                  </div>
-
-                </td>
-
-              </tr>
-
-            ))}
-
-          </tbody>
-
+                      <button className="deleteBtn">
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+  ) : (
+    <tr>
+      <td
+        colSpan="5"
+        style={{
+          textAlign: "center",
+          padding: "30px",
+        }}
+      >
+        No Records Found
+      </td>
+    </tr>
+  )}
+</tbody>
         </table>
-
       </div>
-{
-  showPopup && (
 
-    <NewApplicationForm
-      closePopup={() =>
-        setShowPopup(false)
-      }
-    />
+      <Pagination
+        currentPage={
+          currentPage
+        }
+        totalPages={
+          totalPages
+        }
+        onPageChange={
+          setCurrentPage
+        }
+      />
 
-  )
-}
+      {showPopup && (
+        <NewApplicationForm
+          closePopup={() =>
+            setShowPopup(false)
+          }
+        />
+      )}
     </div>
   );
 }

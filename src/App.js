@@ -6,40 +6,26 @@ import AboutPage from "./pages/Aboutpage";
 import ContactPage from "./pages/Contactpage";
 import NewRegister from "./forms/NewRegister";
 
+import Secure from "./components/Secure";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* Homepage */}
-        <Route
-          path="/"
-          element={<Homepage />}
-        />
+        {/* Public Routes */}
+        <Route path="/" element={<Homepage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/register" element={<NewRegister />} />
 
-        {/* Dashboard Routes */}
-        <Route
-          path="/dashboard/*"
-          element={<Dashboard />}
-        />
-
-        {/* About */}
-        <Route
-          path="/about"
-          element={<AboutPage />}
-        />
-
-        {/* Contact */}
-        <Route
-          path="/contact"
-          element={<ContactPage />}
-        />
-
-        {/* Register */}
-        <Route
-          path="/register"
-          element={<NewRegister />}
-        />
+        {/* Protected Routes */}
+        <Route element={<Secure />}>
+          <Route
+            path="/dashboard/*"
+            element={<Dashboard />}
+          />
+        </Route>
 
       </Routes>
     </BrowserRouter>

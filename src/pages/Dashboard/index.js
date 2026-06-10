@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { getDashboardSummary } from "../../api/applicationApi";
 
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
@@ -30,32 +30,7 @@ import {
 } from "react-icons/fa";
 
 function Dashboard() {
-  const dummyCards = [
-    {
-      title: "Total Submissions",
-      count: "1,245",
-      growth: "+12%",
-      icon: <FaUsers />,
-    },
-    {
-      title: "Today's Submissions",
-      count: "22",
-      growth: "+8%",
-      icon: <FaBriefcase />,
-    },
-    {
-      title: "Weekly Submissions",
-      count: "116",
-      growth: "+18%",
-      icon: <FaChartLine />,
-    },
-    {
-      title: "Placements",
-      count: "10",
-      growth: "+22%",
-      icon: <FaUserTie />,
-    },
-  ];
+  const [cards, setCards] = useState([]);
 
   const dummyTableData = [
     {
@@ -84,51 +59,54 @@ function Dashboard() {
     },
   ];
 
-  const [cards, setCards] =
-    useState(dummyCards);
-
   const [tableData, setTableData] =
     useState(dummyTableData);
 
   useEffect(() => {
-    axios
-      .get(
-        "http://localhost:5000/dashboard-cards"
-      )
-      .then((res) => {
-        if (
-          res.data &&
-          res.data.length > 0
-        ) {
-          setCards(res.data);
-        }
-      })
-      .catch(() => {
-        console.log(
-          "Cards API not connected. Using dummy data."
-        );
-      });
-  }, []);
+  const fetchDashboardSummary = async () => {
+    try {
+      const summary =
+        await getDashboardSummary();
 
-  useEffect(() => {
-    axios
-      .get(
-        "http://localhost:5000/dashboard-table"
-      )
-      .then((res) => {
-        if (
-          res.data &&
-          res.data.length > 0
-        ) {
-          setTableData(res.data);
-        }
-      })
-      .catch(() => {
-        console.log(
-          "Table API not connected. Using dummy data."
-        );
-      });
-  }, []);
+      setCards([
+        {
+          title: "Today's Submissions",
+          count:
+            summary.today_submissions || 0,
+          growth: "8%",
+          icon: <FaBriefcase />,
+        },
+        {
+          title: "Weekly Submissions",
+          count:
+            summary.weekly_submissions || 0,
+          growth: "10%",
+          icon: <FaChartLine />,
+        },
+        {
+          title: "Interviews",
+          count: summary.interviews || 0,
+          growth: "5%",
+          icon: <FaUsers />,
+        },
+        {
+          title: "Placements",
+          count: summary.placements || 0,
+          growth: "0%",
+          icon: <FaUserTie />,
+        },
+      ]);
+    } catch (error) {
+      console.error(
+        "Failed to load dashboard summary",
+        error
+      );
+    }
+  };
+
+  fetchDashboardSummary();
+}, []);
+
 
   return (
     <div className="e2e_dashboard_main_layout">
@@ -169,7 +147,7 @@ function Dashboard() {
             />
 
             <Route
-              path="benchsales"
+              path="bench-sales"
               element={<BenchSales />}
             />
 

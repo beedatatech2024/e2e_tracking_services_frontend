@@ -1,14 +1,24 @@
 import "../../styles/Dashboard/navbar.css";
 import { FaBell } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Navbar() {
   const location = useLocation();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("userData");
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const pageTitles = {
     "/dashboard": "Dashboard",
     "/dashboard/recruiting": "Recruiting",
-    "/dashboard/benchsales": "Bench Sales",
+    "/dashboard/bench-sales": "Bench Sales",
     "/dashboard/hotlist": "Hot List",
     "/dashboard/jobs": "Jobs",
     "/dashboard/vendors": "Prime Vendors",
@@ -27,8 +37,7 @@ function Navbar() {
     <div className="e2e_navbar_container">
       <div>
         <h2 className="e2e_navbar_title">
-          {pageTitles[location.pathname] ||
-            "Dashboard"}
+          {pageTitles[location.pathname] || "Dashboard"}
         </h2>
 
         <p className="e2e_navbar_subtitle">
@@ -48,16 +57,15 @@ function Navbar() {
         </div>
 
         <div className="e2e_navbar_profile">
-          <img
-            src="https://i.pravatar.cc/40"
-            alt="profile"
-          />
+  <div className="e2e_navbar_avatar">
+    {user?.nick_name?.charAt(0)?.toUpperCase() || "U"}
+  </div>
 
-          <div>
-            <h4>Kiran Majji</h4>
-            <p>Admin</p>
-          </div>
-        </div>
+  <div className="e2e_navbar_profile_info">
+    <h4>{user?.nick_name || "User"}</h4>
+    <p>{user?.email || "Employee"}</p>
+  </div>
+</div>
       </div>
     </div>
   );
