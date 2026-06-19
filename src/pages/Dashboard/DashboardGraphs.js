@@ -109,13 +109,13 @@ useEffect(() => {
 
   return (
 
-    <div className="e2e_dashboard_grid">
+    <div className="e2e_dashboard_grid">        
       {/* =========================
           CANDIDATES OVERVIEW
       ========================= */}
       <div className="e2e_card">
         <h3 className="e2e_card_title">Submissions Overview</h3>
-        <div className="e2e_chart_layout">
+        <div className="e2e_chart_layout"> 
           <div className="e2e_chart_wrapper">
             <ResponsiveContainer width="100%" height={180}>
               <PieChart>
@@ -201,6 +201,7 @@ useEffect(() => {
                       background: item.color,
                     }}
                   ></div>
+                  
                 </div>
                 <span>{item.value}%</span>
               </div>
@@ -216,7 +217,7 @@ useEffect(() => {
     <div className="e2e_graph_filter_item">
       <label>Start Date</label>
       <input
-  type="date"
+      type="date"
   className="e2e_graph_input"
   value={startDate}
   onChange={(e) => setStartDate(e.target.value)}

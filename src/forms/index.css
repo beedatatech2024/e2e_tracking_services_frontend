@@ -1,0 +1,63 @@
+.tf-form-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.tf-form-popup {
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    max-width: 70%;
+    max-height: 80%;
+}
+
+.tf-form-popup-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.form-title{
+    font-size: 32px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.tfm-close-button{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: #f00202;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .tf-form-popup {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .tf-form-popup {
+        width: 90%;
+        padding: 20px;
+    }
+}

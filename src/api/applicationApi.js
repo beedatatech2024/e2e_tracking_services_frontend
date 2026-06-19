@@ -15,6 +15,38 @@ export const getApplications = async (
   return response.data;
 };
 
+/*
+|--------------------------------------------------------------------------
+| Bench Sales
+|--------------------------------------------------------------------------
+*/
+
+export const getBenchSalesData = async (
+  page = 1,
+  limit = 10,
+  search = ""
+) => {
+  const response = await axiosInstance.get(
+    `/benchsales/list?page=${page}&limit=${limit}&search=${search}`
+  );
+
+  return response.data;
+};
+
+export const createBenchSalesApplication = async (formData) => {
+  const response = await axiosInstance.post(
+    "/benchsales/create",
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+
+  return response.data;
+};
+
 
 export const getDashboardSummary = async () => {
   const response = await axiosInstance.get(

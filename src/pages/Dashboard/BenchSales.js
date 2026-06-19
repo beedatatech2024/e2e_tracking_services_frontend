@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import "../../styles/Dashboard/benchsales.css";
 import Loader from "./Loader";
 import NewBenchSalesForm from "../../forms/NewBenchSalesForm";
-import { getApplications } from "../../api/applicationApi";
+import { getBenchSalesData } from "../../api/applicationApi";
 import Pagination from "./Pagination";
+import FormView from "../../forms/FormView";
 
 function BenchSales() {
   const [loading, setLoading] = useState(true);
+  const [openForm, setOpenForm] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
@@ -25,7 +27,7 @@ function BenchSales() {
         setTableLoading(true);
       }
 
-      const response = await getApplications(
+      const response = await getBenchSalesData(
         currentPage,
         entries,
         debouncedSearch
@@ -84,7 +86,7 @@ function BenchSales() {
           <button
             className="e2e_recruiting_add_btn"
             onClick={() =>
-              setShowPopup(true)
+              setOpenForm("bench")
             }
           >
             + Add New
@@ -211,6 +213,9 @@ function BenchSales() {
           />
         )
       }
+
+      <FormView openForm={openForm} setOpenForm={setOpenForm} />
+
     </div>
   );
 }
