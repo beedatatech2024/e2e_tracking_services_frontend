@@ -18,6 +18,7 @@ function BenchSales() {
   const [totalPages, setTotalPages] = useState(1);
   const [initialLoading, setInitialLoading] = useState(true);
   const [tableLoading, setTableLoading] = useState(false);
+  const [selectedApplicationId, setSelectedApplicationId] = useState(null);
 
   const fetchCandidates = async () => {
     try {
@@ -163,14 +164,17 @@ function BenchSales() {
                   <td className="e2e_benchsales_td_candidate">
                     <div className="e2e_benchsales_details">
                       <p>Name : <strong>{item.candidate_name}</strong></p>
-                      <p>Technology :<strong>{item.technology}</strong></p>
+                      <p>Technology :<strong>{item.role}</strong></p>
                     </div>
                   </td>
                   <td className="e2e_benchsales_td_poc">{item.poc}</td>
                   <td className="e2e_benchsales_td_client">{item.client}</td>
                   <td className="e2e_benchsales_td_action">
                     <div className="e2e_benchsales_actions">
-                      <button className="e2e_benchsales_view_btn">View</button>
+                      <button className="e2e_benchsales_view_btn" onClick={() => {
+                        setSelectedApplicationId(item.id);
+                        setOpenForm("benchView");
+                      }}>View</button>
                       <button className="e2e_benchsales_edit_btn">Edit</button>
                       <button className="e2e_benchsales_delete_btn">Delete</button>
                     </div>
@@ -214,7 +218,7 @@ function BenchSales() {
         )
       }
 
-      <FormView openForm={openForm} setOpenForm={setOpenForm} />
+      <FormView openForm={openForm} setOpenForm={setOpenForm} applicationId={selectedApplicationId} />
 
     </div>
   );

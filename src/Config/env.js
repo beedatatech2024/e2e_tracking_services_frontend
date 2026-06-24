@@ -3,7 +3,7 @@ const ENV = {
       baseUrl: "http://localhost/api",
     },
     production: {
-      baseUrl: "https://your-live-api.com/api",
+      baseUrl: "http://localhost/api",
     },
   };
   

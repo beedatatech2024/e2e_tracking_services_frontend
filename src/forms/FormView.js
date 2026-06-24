@@ -1,11 +1,13 @@
 import React from "react";
+import ApplicationView from "./ApplicationView";
 import BenchSales from "./BenchSales";
 import "./index.css"
 
 const FormView = ({
     formTitle,
   setOpenForm,
-  openForm
+  openForm,
+  applicationId
 }) => {
 
   const renderForms = () => {
@@ -16,6 +18,14 @@ const FormView = ({
         return (
           <BenchSales
             onClose={() => setOpenForm(null)}
+          />
+        );
+
+        case "benchView":
+        return (
+          <ApplicationView
+            onClose={() => setOpenForm(null)}
+            applicationId={applicationId}
           />
         );
 

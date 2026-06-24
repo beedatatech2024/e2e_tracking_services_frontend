@@ -554,11 +554,13 @@
 
 .e2e_benchsales_th_poc,
 .e2e_benchsales_td_poc{
-  width: 14%;
+  width: 30%;
   text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: wrap;
+  text-wrap: wrap;
+  margin-right: 10px;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
 }
 
 .e2e_benchsales_th_client,
