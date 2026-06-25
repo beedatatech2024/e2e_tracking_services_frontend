@@ -2,23 +2,28 @@ import React from "react";
 import ApplicationView from "./ApplicationView";
 import BenchSales from "./BenchSales";
 import "./index.css"
+import DeleteConfirmation from "./DeleteConfirmation";
 
 const FormView = ({
   formTitle,
   setOpenForm,
   openForm,
+  refreshData,
   applicationId,
   isEdit = false,
+  title,
+  message
 }) => {
 
   const renderForms = () => {
-    console.log(formTitle);
+    console.log(openForm);
 
     switch (openForm) {
       case "bench":
         return (
           <BenchSales
             onClose={() => setOpenForm(null)}
+            refreshData={refreshData}
           />
         );
 
@@ -27,6 +32,7 @@ const FormView = ({
           <ApplicationView
             onClose={() => setOpenForm(null)}
             applicationId={applicationId}
+            refreshData={refreshData}
           />
         );
 
@@ -36,6 +42,15 @@ const FormView = ({
             onClose={() => setOpenForm(null)}
             applicationId={applicationId}
             isEdit={true}
+            refreshData={refreshData}
+          />
+        );
+
+      case "benchDelete":
+        return (
+          <DeleteConfirmation
+            onClose={() => setOpenForm(null)}
+            applicationId={applicationId}
           />
         );
 

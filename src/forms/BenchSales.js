@@ -15,9 +15,15 @@ import {
 
 import "./BenchSales.css";
 
-const BenchSales = ({ onClose, applicationId, isEdit = false, }) => {
+const BenchSales = ({ onClose, applicationId, isEdit = false, refreshData}) => {
+  const today = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "America/New_York",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(new Date());
   const [formData, setFormData] = useState({
-    date_created: "",
+    date_created: today,
     candidate_name: "",
     vendor: "",
     poc: "",
@@ -60,7 +66,7 @@ const BenchSales = ({ onClose, applicationId, isEdit = false, }) => {
             const res = await getBenchSalesById(applicationId);
 
             setFormData({
-                date_created: res.data.date_created || "",
+                date_created: res.data.date_created || today,
                 candidate_name: res.data.candidate_name || "",
                 vendor: res.data.vendor || "",
                 poc: res.data.poc || "",
@@ -115,6 +121,7 @@ const BenchSales = ({ onClose, applicationId, isEdit = false, }) => {
                     ? "Application Updated Successfully"
                     : "Application Created Successfully"
             );
+            refreshData?.();
 
             onClose?.();
 

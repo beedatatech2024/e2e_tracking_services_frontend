@@ -217,7 +217,10 @@ function BenchSales() {
                       >
                         Edit
                       </button>
-                      <button className="e2e_benchsales_delete_btn">Delete</button>
+                      <button className="e2e_benchsales_delete_btn" onClick={() => {
+                          setSelectedApplicationId(item.id);
+                          setOpenForm("benchDelete");
+                        }}>Delete</button>
                     </div>
                   </td>
                 </tr>
@@ -259,7 +262,7 @@ function BenchSales() {
         )
       }
 
-      <FormView openForm={openForm} setOpenForm={setOpenForm} applicationId={selectedApplicationId} />
+      <FormView openForm={openForm} setOpenForm={setOpenForm} applicationId={selectedApplicationId} refreshData={fetchCandidates}/>
 
     </div>
   );

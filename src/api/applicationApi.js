@@ -118,3 +118,12 @@ export const updateBenchSalesApplication = async (id, data) => {
 
   return response.data;
 };
+
+
+export const deleteBenchSalesApplication = async (id) => {
+    const response = await axiosInstance.delete(
+        `/benchsales/delete/${id}`
+    );
+
+    return response.data;
+};
