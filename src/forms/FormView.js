@@ -4,15 +4,16 @@ import BenchSales from "./BenchSales";
 import "./index.css"
 
 const FormView = ({
-    formTitle,
+  formTitle,
   setOpenForm,
   openForm,
-  applicationId
+  applicationId,
+  isEdit = false,
 }) => {
 
   const renderForms = () => {
     console.log(formTitle);
-    
+
     switch (openForm) {
       case "bench":
         return (
@@ -21,11 +22,20 @@ const FormView = ({
           />
         );
 
-        case "benchView":
+      case "benchView":
         return (
           <ApplicationView
             onClose={() => setOpenForm(null)}
             applicationId={applicationId}
+          />
+        );
+
+      case "benchEdit":
+        return (
+          <BenchSales
+            onClose={() => setOpenForm(null)}
+            applicationId={applicationId}
+            isEdit={true}
           />
         );
 
@@ -40,7 +50,7 @@ const FormView = ({
         <div className="tf-form-popup-overlay">
           <div className="tf-form-popup">
             <div className="tf-form-popup-header">
-                <h1 className="form-title">{formTitle}</h1>
+              <h1 className="form-title">{formTitle}</h1>
               <button className="tfm-close-button" onClick={() => setOpenForm(null)}>
                 X
               </button>

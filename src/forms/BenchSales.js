@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import { createBenchSalesApplication } from "../api/applicationApi.js";
+import React, { useEffect, useState } from "react";
+import {
+  createBenchSalesApplication,
+  getBenchSalesById,
+  updateBenchSalesApplication
+} from "../api/applicationApi.js";
 import {
   FiX,
   FiCalendar,
@@ -11,7 +15,7 @@ import {
 
 import "./BenchSales.css";
 
-const BenchSales = ({ onClose }) => {
+const BenchSales = ({ onClose, applicationId, isEdit = false, }) => {
   const [formData, setFormData] = useState({
     date_created: "",
     candidate_name: "",
@@ -48,39 +52,85 @@ const BenchSales = ({ onClose }) => {
     });
   };
 
-  const handleSubmit = async () => {
-    try {
-      const payload = new FormData();
+  useEffect(() => {
+    if (!isEdit || !applicationId) return;
 
-      Object.keys(formData).forEach((key) => {
-        payload.append(key, formData[key]);
-      });
+    const fetchApplication = async () => {
+        try {
+            const res = await getBenchSalesById(applicationId);
 
-      Object.keys(files).forEach((key) => {
-        if (files[key]) {
-          payload.append(key, files[key]);
+            setFormData({
+                date_created: res.data.date_created || "",
+                candidate_name: res.data.candidate_name || "",
+                vendor: res.data.vendor || "",
+                poc: res.data.poc || "",
+                feedback: res.data.feedback || "",
+                client: res.data.client || "",
+                emp_loc: res.data.emp_loc || "",
+                rate: res.data.rate || "",
+                role: res.data.role || "",
+                candidate_loc: res.data.candidate_loc || "",
+                remarks: res.data.remarks || "",
+            });
+
+        } catch (err) {
+            console.log(err);
         }
-      });
+    };
 
-      const response =
-        await createBenchSalesApplication(payload);
+    fetchApplication();
 
-      if (response.success) {
-        alert("Application Created Successfully");
+}, [applicationId, isEdit]);
 
-        onClose?.();
-      } else {
-        alert(response.message);
-      }
+  const handleSubmit = async () => {
+    console.log(formData)
+    try {
+
+        const payload = new FormData();
+
+        Object.keys(formData).forEach(key => {
+            payload.append(key, formData[key]);
+        });
+
+        Object.keys(files).forEach(key => {
+            if (files[key]) {
+                payload.append(key, files[key]);
+            }
+        });
+
+        let response;
+
+        if (isEdit) {
+    response = await updateBenchSalesApplication(
+        applicationId,
+        payload
+    );
+} else {
+    response = await createBenchSalesApplication(payload);
+}
+
+        if (response.success) {
+            alert(
+                isEdit
+                    ? "Application Updated Successfully"
+                    : "Application Created Successfully"
+            );
+
+            onClose?.();
+
+        } else {
+            alert(response.message);
+        }
+
     } catch (error) {
-      console.error(error);
+        console.error(error);
 
-      alert(
-        error?.response?.data?.message ||
-        "Failed to create application"
-      );
+        alert(
+            error?.response?.data?.message ||
+            "Operation failed"
+        );
     }
-  };
+};
 
 
   return (
@@ -283,9 +333,14 @@ const BenchSales = ({ onClose }) => {
           Cancel
         </button>
 
-        <button className="saveBtn" onClick={handleSubmit}>
-          Save Application
-        </button>
+        <button
+    className="saveBtn"
+    onClick={handleSubmit}
+>
+    {isEdit
+        ? "Update Application"
+        : "Save Application"}
+</button>
       </div>
     </div>
     // </div>

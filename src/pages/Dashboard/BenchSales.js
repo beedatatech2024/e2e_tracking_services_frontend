@@ -5,6 +5,10 @@ import NewBenchSalesForm from "../../forms/NewBenchSalesForm";
 import { getBenchSalesData } from "../../api/applicationApi";
 import Pagination from "./Pagination";
 import FormView from "../../forms/FormView";
+import getUserDataFromCookies from "../../utils/getUserDataFromCookies";
+
+const user = getUserDataFromCookies();
+const loginUserId = user?.user_id;
 
 function BenchSales() {
   const [loading, setLoading] = useState(true);
@@ -48,6 +52,16 @@ function BenchSales() {
       setInitialLoading(false);
       setTableLoading(false);
     }
+  };
+
+  const convertDate = (date) => {
+    const d = new Date(date);
+
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const year = d.getFullYear();
+
+    return `${day}-${month}-${year}`;
   };
 
   useEffect(() => {
@@ -133,8 +147,11 @@ function BenchSales() {
           <thead className="e2e_benchsales_thead">
             <tr className="e2e_benchsales_head_row">
               <th className="e2e_benchsales_th_id">#</th>
-              <th className="e2e_benchsales_th_submission">Submission Date</th>
               <th className="e2e_benchsales_th_candidate">Candidate Details</th>
+
+              <th className="e2e_benchsales_th_submission">Submission Date</th>
+              <th className="e2e_benchsales_th_submission">Submitted By</th>
+
               <th className="e2e_benchsales_th_poc">POC</th>
               <th className="e2e_benchsales_th_client">Client</th>
               <th className="e2e_benchsales_th_action">Action</th>
@@ -160,13 +177,29 @@ function BenchSales() {
                   className="e2e_benchsales_row"
                 >
                   <td className="e2e_benchsales_td_id">{index + 1} </td>
-                  <td className="e2e_benchsales_td_submission">{item.date_created}</td>
                   <td className="e2e_benchsales_td_candidate">
                     <div className="e2e_benchsales_details">
                       <p>Name : <strong>{item.candidate_name}</strong></p>
                       <p>Technology :<strong>{item.role}</strong></p>
                     </div>
                   </td>
+                  <td className="e2e_benchsales_td_submission">{convertDate(item.date_created)}</td>
+                  <td
+                    className="e2e_benchsales_td_submission"
+                    style={{
+                      color:
+                        Number(loginUserId) === Number(item.employee_id)
+                          ? "#16a34a"
+                          : "#1f1e1e",
+                      fontWeight:
+                        Number(loginUserId) === Number(item.employee_id)
+                          ? "600"
+                          : "400",
+                    }}
+                  >
+                    {item.employee_name}
+                  </td>
+
                   <td className="e2e_benchsales_td_poc">{item.poc}</td>
                   <td className="e2e_benchsales_td_client">{item.client}</td>
                   <td className="e2e_benchsales_td_action">
@@ -175,7 +208,15 @@ function BenchSales() {
                         setSelectedApplicationId(item.id);
                         setOpenForm("benchView");
                       }}>View</button>
-                      <button className="e2e_benchsales_edit_btn">Edit</button>
+                      <button
+                        className="e2e_benchsales_edit_btn"
+                        onClick={() => {
+                          setSelectedApplicationId(item.id);
+                          setOpenForm("benchEdit");
+                        }}
+                      >
+                        Edit
+                      </button>
                       <button className="e2e_benchsales_delete_btn">Delete</button>
                     </div>
                   </td>

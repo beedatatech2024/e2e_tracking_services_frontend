@@ -411,6 +411,7 @@
   display:flex;
 
   flex-direction:column;
+  align-items: flex-start;
 
   gap:8px;
 }
@@ -424,6 +425,7 @@
   line-height:1.5;
 
   color:#475569;
+  text-align: left;
 }
 
 .e2e_benchsales_details strong{

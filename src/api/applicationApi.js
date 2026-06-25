@@ -102,3 +102,19 @@ export const createApplication = async (formData) => {
 
   return response.data;
 };
+
+export const updateBenchSalesApplication = async (id, data) => {
+  console.log("Form Date", Object.fromEntries(data.entries()));
+
+  const response = await axiosInstance.put(
+    `/benchsales/update/${id}`,
+    data,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+
+  return response.data;
+};
